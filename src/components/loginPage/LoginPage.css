@@ -1,0 +1,54 @@
+.loginPage {
+    background-image: url("bg2.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 100px;
+    padding-right: 100px;
+    padding-left: 100px;
+    width: 100%;
+    
+}
+
+.picture {
+    width: 500px;
+    height: 100%;
+}
+
+.padding {
+    width: 100px;
+    padding: 0px 80px 0px 80px;
+} 
+
+@media only screen
+and (max-width: 1150px){
+    .loginPage {
+        flex-wrap: wrap-reverse;
+        padding: 0px;
+    }
+}
+
+@media only screen
+and (min-width: 320px){
+    .picture {
+        width: 300px;
+    }
+}
+
+@media only screen
+and (min-width: 376px){
+    .picture {
+        width: 350px;
+    }
+}
+
+@media only screen
+and (min-width: 750px){
+    .picture {
+        width: 500px;
+    }
+}
+ 

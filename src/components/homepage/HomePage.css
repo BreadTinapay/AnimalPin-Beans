@@ -1,0 +1,9 @@
+.bg {
+    background-image: url("bg2.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
