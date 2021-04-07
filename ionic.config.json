@@ -1,0 +1,7 @@
+{
+    "name": "animalpin",
+    "integrations": {
+      "capacitor": {}
+    },
+    "type": "react"
+  }
