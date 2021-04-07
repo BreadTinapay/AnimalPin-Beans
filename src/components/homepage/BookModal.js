@@ -1,10 +1,10 @@
-import { TextField } from '@material-ui/core';
+import { Avatar, TextField } from '@material-ui/core';
 import React from 'react'
 import { Button, Col, Form, Modal } from 'react-bootstrap';
 import data from '../../services/ph.json';
 import { useStateValue } from '../../StateProvider';
 
-function BookModal() {
+function BookModal({background1, background2, background3}) {
     const [show, setShow] = React.useState(false);
     const [fname, setFname] = React.useState("");
     const [lname, setLname] = React.useState("");
@@ -40,6 +40,7 @@ function BookModal() {
                     edate: edate,
                 }
             })
+            console.log(info)
             alert("Your are successfully booked.");
             handleClose();
         }
@@ -47,10 +48,24 @@ function BookModal() {
   
     return (
       <>
-        <Button variant="primary" onClick={handleShow}>
+        {/* <Button variant="primary" onClick={handleShow}>
           Book here
-        </Button>
-  
+        </Button> */}
+         <div style={{width: "11rem", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", cursor: "pointer"}}
+         onClick={handleShow}>
+                <Avatar alt="Cat" src={background1} style={{width: "10rem", height: "10rem", border: "10px solid orange"}} />
+                <p style={{textAlign: "center"}}>Day care</p>
+        </div>
+
+        <div style={{width: "11rem", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", cursor: "pointer"}} onClick={handleShow}>
+            <Avatar alt="Cat" src={background2} style={{width: "10rem", height: "10rem", border: "10px solid orange"}} />
+            <p style={{textAlign: "center"}}>Pet Walking</p>
+        </div>
+
+        <div style={{width: "11rem", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", cursor: "pointer"}} onClick={handleShow}>
+            <Avatar alt="Cat" src={background3} style={{width: "10rem", height: "10rem", border: "10px solid orange"}} />
+            <p style={{textAlign: "center"}}>Drop in Visit</p>
+        </div>
         <Modal
           size="lg"
           show={show}
@@ -109,11 +124,12 @@ function BookModal() {
                             </Form.Group>
                         </Form.Row>
                         <Form.Group>
-                            <Form.Label>How often do you need this service?</Form.Label>
+                            <Form.Label>What type of service?</Form.Label>
                             <Form.Control as="select" defualtValue="Choose.." value={often} onChange={(e) => setOften(e.target.value)}>
-                                <option>Choose..</option>
-                                <option>One Time</option>
-                                <option>Weekly</option>
+                                <option value="">Choose..</option>
+                                <option>Day Care</option>
+                                <option>Pet Walking</option>
+                                <option>Drop in Vist</option>
                             </Form.Control>
                         </Form.Group>
                         <Form.Label>For What Dates?</Form.Label>

@@ -4,8 +4,11 @@ import './LoginPage.css'
 import {auth} from '../../firebase'
 import {useHistory} from 'react-router-dom'
 import SignUp from '../signupModal/SignUp'
+import { useStateValue } from '../../StateProvider'
 
 function LoginPage() {
+    const [{user}, dispatch] = useStateValue();
+
     const [email, setEmail] = React.useState("");
     const [pass, setPass] = React.useState("");
 
@@ -18,14 +21,26 @@ function LoginPage() {
             .then((auth) => {
                 alert("you are now logged in")
                 history.push("/")
+                dispatch({
+                    type: "SET_USER",
+                    user: auth.email
+                })
+                console.log(`ima pro ${auth.email}`)
             }).catch((event) => alert(event.message))
+           
         }
     }
 
     return (
         <div className="loginPage">
             <Container style={{ padding: 30}}>
-                <h1 style={{ fontWeight: "700" }}>Welcome to Animal<span style={{color: "pink"}}>Pin</span></h1>
+            {user ? (
+                <>
+                <h1>You are already logged in</h1>
+                </>
+                ) :  (
+                        <>
+                        <h1 style={{ fontWeight: "700" }}>Welcome to Animal<span style={{color: "pink"}}>Pin</span></h1>
                 <h5>We do services for every pet you have</h5>
                     <Container className="padding">
                         <Form style={{ marginTop: "20px"}}>
@@ -48,9 +63,12 @@ function LoginPage() {
                                 <SignUp/>
                             </Form.Label>
                         </Form>
-                </Container>
-                {/* beans ok rana? */}
+                    </Container>
+                            
+                        </>
+                    )}
             </Container>
+            
                    
             <Container>
                 <img
@@ -67,4 +85,4 @@ export default LoginPage
 
 // 
 // geee send daw pic sa messenger bai sa firebase
-// yes <3 
+// yes <3 <3< 3 < 3<# <3 
